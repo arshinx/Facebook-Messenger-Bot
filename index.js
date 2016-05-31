@@ -42,6 +42,10 @@ app.post('/webhook/', function (req, res) {
             sendGenericMessage(sender)
             continue
         }
+        if (text.indexOf("Admission") !=-1) {
+            sendAdmissionsPage(sender)
+            continue
+        }
         sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
       }
       if (event.postback) {
@@ -97,6 +101,55 @@ function sendGenericMessage(sender) {
                     "title": "Second card",
                     "subtitle": "Element #2 of an hscroll",
                     "image_url": "http://messengerdemo.parseapp.com/img/gearvr.png",
+                    "buttons": [{
+                        "type": "postback",
+                        "title": "Postback",
+                        "payload": "Payload for second element in a generic bubble",
+                    }],
+                }]
+            }
+        }
+    }
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token:token},
+        method: 'POST',
+        json: {
+            recipient: {id:sender},
+            message: messageData,
+        }
+    }, function(error, response, body) {
+        if (error) {
+            console.log('Error sending messages: ', error)
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error)
+        }
+    })
+}
+
+function sendAdmissionsPage(sender) {
+    let messageData = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [{
+                    "title": "Stanford Admission Guide",
+                    "subtitle": "Review the Checklist",
+                    "image_url": "http://stanford.edu/rw_includes/homepage/images/2016-05-27_ht_SoEd_150905-1163.jpg",
+                    "buttons": [{
+                        "type": "web_url",
+                        "url": "http://admission.stanford.edu/pdf/AppGuideFreshman.pdf",
+                        "title": "Application Guide"
+                    }, {
+                        "type": "postback",
+                        "title": "Postback",
+                        "payload": "Payload for first element in a generic bubble",
+                    }],
+                }, {
+                    "title": "Visit Stanford",
+                    "subtitle": "Let Stanford Students guide you to the Secrets",
+                    "image_url": "http://stanford.edu/rw_includes/homepage/images/2016-04-29_ht_admits_0464.jpg",
                     "buttons": [{
                         "type": "postback",
                         "title": "Postback",
