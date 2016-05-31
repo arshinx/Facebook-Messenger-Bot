@@ -143,8 +143,8 @@ function sendAdmissionsPage(sender) {
                         "title": "Application Guide"
                     }, {
                         "type": "postback",
-                        "title": "Postback",
-                        "payload": "Payload for first element in a generic bubble",
+                        "title": "Okay",
+                        "payload": "We're Glad! Please begin on your Application and an interview is always advantageous!",
                     }],
                 }, {
                     "title": "Visit Stanford",
@@ -152,8 +152,8 @@ function sendAdmissionsPage(sender) {
                     "image_url": "http://stanford.edu/rw_includes/homepage/images/2016-04-29_ht_admits_0464.jpg",
                     "buttons": [{
                         "type": "postback",
-                        "title": "Postback",
-                        "payload": "Payload for second element in a generic bubble",
+                        "title": "Tell me more!",
+                        "payload": "There are thousands of applicants every year completing applications in a thousand distinct ways. There must be something new that the succesful applicants can tell you!",
                     }],
                 }]
             }
