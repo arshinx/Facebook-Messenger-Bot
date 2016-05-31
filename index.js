@@ -165,7 +165,7 @@ function sendAdmissionsPage(sender) {
         method: 'POST',
         json: {
             recipient: {id:sender},
-            message: messageData[0],
+            message: messageData,
         }
     }, function(error, response, body) {
         if (error) {
