@@ -148,7 +148,7 @@ function sendAdmissionsPage(sender) {
                     }],
                 }, {
                     "title": "Visit Stanford",
-                    "subtitle": "Let Stanford Students guide you to the Secrets",
+                    "subtitle": "Let Stanford Students guide you to the Secrets of writing a better, more prepared and strategic application",
                     "image_url": "http://stanford.edu/rw_includes/homepage/images/2016-04-29_ht_admits_0464.jpg",
                     "buttons": [{
                         "type": "postback",
